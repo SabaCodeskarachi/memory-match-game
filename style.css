@@ -1,0 +1,428 @@
+/* 1. Theme ke colors */
+:root {
+    --bg-color: #0b1220;
+    --card-color: #111c2e;
+    --teal-color: #2dd4bf;
+    --text-color: #f8fafc;
+    --muted-color: #94a3b8;
+    --border-color: #263449;
+    --success-color: #34d399;
+}
+
+/* 2. Har element ki sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* 3. Page ki basic styling */
+html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top, #14243a, var(--bg-color) 65%);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* 4. Main container */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+/* 5. Heading section */
+.header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.highlight {
+    color: var(--teal-color);
+}
+
+.subtitle {
+    max-width: 500px;
+    margin: 14px auto 0;
+    color: var(--muted-color);
+    font-size: 16px;
+}
+
+/* 6. Start screen */
+.start-screen {
+    max-width: 520px;
+    margin: 0 auto 24px;
+    padding: 32px 20px;
+    text-align: center;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+}
+
+.start-emoji {
+    font-size: 48px;
+}
+
+.start-screen h2 {
+    margin: 12px 0 8px;
+    font-size: 25px;
+}
+
+.start-screen p {
+    margin: 0 0 22px;
+    color: var(--muted-color);
+}
+
+/* 7. Buttons */
+.main-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 24px;
+    border: none;
+    border-radius: 12px;
+    background: var(--teal-color);
+    color: #06231f;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.main-button:hover {
+    background: #5eead4;
+    transform: translateY(-1px);
+}
+
+.main-button:active {
+    transform: translateY(0);
+}
+
+.main-button:focus-visible {
+    outline: 3px solid var(--text-color);
+    outline-offset: 3px;
+}
+
+/* Hidden attribute ko har haal mein apply karna */
+[hidden] {
+    display: none !important;
+}
+
+/* 8. Game statistics */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.stat-box {
+    min-width: 0;
+    padding: 17px 10px;
+    text-align: center;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+}
+
+.stat-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted-color);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    display: block;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 9. Cards ka board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin: 0 auto 24px;
+}
+
+/* 10. Individual cards */
+.memory-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #30445d;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #17283d, #111c2e);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: clamp(25px, 5vw, 42px);
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+@media (hover: hover) {
+    .memory-card:hover:not(:disabled) {
+        transform: translateY(-3px);
+        border-color: var(--teal-color);
+    }
+}
+
+.memory-card.flipped {
+    background: #173847;
+    border-color: var(--teal-color);
+}
+
+.memory-card.matched {
+    background: #123b36;
+    border-color: var(--success-color);
+    cursor: default;
+}
+
+.memory-card:focus-visible {
+    outline: 3px solid var(--teal-color);
+    outline-offset: 2px;
+}
+
+.memory-card:disabled {
+    opacity: 1;
+    cursor: default;
+}
+
+/* 11. Restart button */
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 18px;
+}
+
+#restartButton {
+    min-width: 190px;
+}
+
+/* 12. Messages */
+.message {
+    min-height: 48px;
+    margin: 0 0 20px;
+    padding: 10px 8px;
+    color: var(--teal-color);
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* 13. Instructions */
+.instructions {
+    padding: 22px 24px;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    color: var(--muted-color);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.instructions h2 {
+    margin: 0 0 12px;
+    color: var(--text-color);
+    font-size: 19px;
+}
+
+.instructions ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.instructions li {
+    margin-bottom: 5px;
+}
+
+/* 14. Footer */
+.footer {
+    margin-top: 26px;
+    padding: 12px 0;
+    color: var(--muted-color);
+    text-align: center;
+    font-size: 12px;
+}
+
+/* 15. Tablet screens */
+@media (max-width: 700px) {
+    .container {
+        max-width: 560px;
+        padding: 25px 18px;
+    }
+
+    .header {
+        margin-bottom: 23px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .stat-box {
+        padding: 14px 7px;
+    }
+
+    .game-board {
+        gap: 11px;
+    }
+
+    .memory-card {
+        border-radius: 12px;
+    }
+
+    .instructions {
+        padding: 18px;
+    }
+}
+
+/* 16. Mobile screens */
+@media (max-width: 420px) {
+    .container {
+        padding: 22px 12px;
+    }
+
+    .logo {
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: clamp(27px, 8vw, 34px);
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .start-screen {
+        padding: 25px 15px;
+    }
+
+    .start-screen h2 {
+        font-size: 22px;
+    }
+
+    .start-screen p {
+        font-size: 14px;
+    }
+
+    .stats {
+        gap: 7px;
+    }
+
+    .stat-box {
+        padding: 12px 4px;
+        border-radius: 11px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        letter-spacing: 0.4px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .game-board {
+        gap: 8px;
+    }
+
+    .memory-card {
+        border-radius: 10px;
+        font-size: clamp(23px, 8vw, 32px);
+    }
+
+    .main-button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .message {
+        font-size: 13px;
+    }
+
+    .instructions {
+        padding: 16px;
+        font-size: 13px;
+    }
+}
+
+/* 17. Bohat chhoti screens */
+@media (max-width: 340px) {
+    .container {
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+
+    .game-board {
+        gap: 6px;
+    }
+
+    .stats {
+        gap: 5px;
+    }
+
+    .stat-label {
+        font-size: 9px;
+    }
+
+    .stat-value {
+        font-size: 18px;
+    }
+
+    .memory-card {
+        font-size: 22px;
+    }
+
+    .instructions {
+        padding: 13px;
+    }
+}
+
+/* 18. Motion kam karne ki accessibility setting */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}

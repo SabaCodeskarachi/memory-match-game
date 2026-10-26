@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page ki character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Mobile screen par proper width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Browser tab ka title -->
+    <title>Memory Match | Brain Game</title>
+
+    <!-- Search engines ke liye short description -->
+    <meta name="description" content="Play Memory Match, a fun emoji game to test your memory.">
+
+    <!-- CSS file connect karna -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Game ka main container -->
+    <main class="container">
+
+        <!-- Heading section -->
+        <header class="header">
+            <div class="logo" aria-hidden="true">🧠</div>
+
+            <h1>Memory <span class="highlight">Match</span></h1>
+
+            <p class="subtitle">
+                Test your memory. Match all the emoji pairs!
+            </p>
+        </header>
+
+        <!-- Start screen -->
+        <section class="start-screen" id="startScreen">
+            <div class="start-emoji">🎮</div>
+            <h2>Ready to Play?</h2>
+            <p>You have 60 seconds to find all 8 matching pairs.</p>
+
+            <button class="main-button" id="startButton" type="button">
+                ▶ Start Game
+            </button>
+        </section>
+
+        <!-- Game area: shuru mein hidden -->
+        <section class="game-area" id="gameArea" hidden>
+
+            <!-- Game statistics -->
+            <section class="stats" aria-label="Game statistics">
+
+                <div class="stat-box">
+                    <span class="stat-label">MOVES</span>
+                    <span class="stat-value" id="moves">0</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">MATCHED</span>
+                    <span class="stat-value" id="matched">0/8</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">TIME LEFT</span>
+                    <span class="stat-value" id="timer">01:00</span>
+                </div>
+
+            </section>
+
+            <!-- JavaScript yahan cards banayegi -->
+            <section
+                class="game-board"
+                id="gameBoard"
+                aria-label="Memory cards">
+            </section>
+
+        </section>
+
+        <!-- Game message -->
+        <p class="message" id="message" role="status" aria-live="polite">
+            Press Start Game when you are ready!
+        </p>
+
+        <!-- Restart button: game khatam hone se pehle hidden -->
+        <div class="controls">
+            <button
+                class="main-button"
+                id="restartButton"
+                type="button"
+                hidden>
+                ↻ Restart Game
+            </button>
+        </div>
+
+        <!-- Instructions -->
+        <section class="instructions">
+            <h2>🎮 How to Play</h2>
+
+            <ol>
+                <li>Press Start Game to begin.</li>
+                <li>You have 60 seconds to find all 8 matching pairs.</li>
+                <li>Tap or click a card to reveal its emoji.</li>
+                <li>Reveal another card and try to find its matching pair.</li>
+                <li>Match all pairs before the timer reaches zero to win.</li>
+                <li>Try to win using fewer moves!</li>
+            </ol>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Made with ❤️ using HTML, CSS &amp; JavaScript
+        </footer>
+
+    </main>
+
+    <!-- JavaScript file ko body ke end par connect karna -->
+    <script src="script.js"></script>
+</body>
+</html>
